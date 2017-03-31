@@ -1,0 +1,82 @@
+﻿<div ng-controller="indexController">
+    <script type="text/ng-template" id="modalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Please input game results!</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div class="input-group col-sm-6">
+                <span class="input-group-addon" id="basic-addon3">Your Score:</span>
+                <input type="number" min="0" class="form-control" id="playerOneScore" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group col-sm-6">
+                <span class="input-group-addon" id="basic-addon3">Second Player Score:</span>
+                <input type="number" min="0" class="form-control" id="playerTwoScore" aria-describedby="basic-addon3">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok($event)">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="col-md-12">
+            <h3>Tier 1</h3>
+            <ul class="list-group list-group-t1">
+                <li class="list-group-item" ng-repeat="player in tier1">
+                    <span class="glyphicon glyphicon-chevron-up my-badge-icon"></span>
+                    <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
+                    <span class="badge badge-default badge-pill">{{player.Rating}}</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h3>Tier 2</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="player in tier2">
+                    <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
+                    <span class="badge badge-default badge-pill">{{player.Rating}}</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h3>Tier 3</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="player in tier3">
+                    <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
+                    <span class="badge badge-default badge-pill">{{player.Rating}}</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h3>Games History</h3>
+        <ul class="list-group">
+            <div class="list-group-item row" ng-repeat="game in games">
+                <div class="col-sm-3">
+                    <a href="#!/profile/{{game.GameResults[0].Player.PlayerId}}">{{game.GameResults[0].Player.Name.split('@')[0]}}</a>
+                </div>
+                <div class="col-sm-2">
+                    <span class="badge badge-default badge-pill" ng-class="game.GameResults[0].PlayerId===game.WinnerId ? 'my-badge-win' : 'my-badge-lose'">
+                        {{game.GameResults[0].Score}}
+                    </span>
+                </div>
+                <div class="col-sm-2">
+                    vs
+                </div>
+                <div class="col-sm-2">
+                    <span class="badge badge-default badge-pill" ng-class="game.GameResults[1].PlayerId===game.WinnerId ? 'my-badge-win' : 'my-badge-lose'">
+                        {{game.GameResults[1].Score}}
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#!/profile/{{game.GameResults[1].Player.PlayerId}}">{{game.GameResults[1].Player.Name.split('@')[0]}}</a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

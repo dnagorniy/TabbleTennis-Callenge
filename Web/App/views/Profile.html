@@ -1,0 +1,40 @@
+﻿<div ng-controller="profileController">
+    <a href="javascript:history.back()">Go Back</a>
+    <div class="col-sm-4">
+        <div class="col-md-12">
+            <h3>Profile</h3>
+            <h3>{{profile.Name}}</h3>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="col-md-12">
+            <h3>Stats</h3>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h3>Games History</h3>
+        <ul class="list-group">
+            <div class="list-group-item row" ng-repeat="game in profile.Games">
+                <div class="col-sm-3">
+                    <a href="#!/profile/{{game.GameResults[0].Player.PlayerId}}">{{game.GameResults[0].Player.Name.split('@')[0]}}</a>
+                </div>
+                <div class="col-sm-2">
+                    <span class="badge badge-default badge-pill" ng-class="game.GameResults[0].PlayerId===game.WinnerId ? 'my-badge-win' : 'my-badge-lose'">
+                        {{game.GameResults[0].Score}}
+                    </span>
+                </div>
+                <div class="col-sm-2">
+                    vs
+                </div>
+                <div class="col-sm-2">
+                    <span class="badge badge-default badge-pill" ng-class="game.GameResults[1].PlayerId===game.WinnerId ? 'my-badge-win' : 'my-badge-lose'">
+                        {{game.GameResults[1].Score}}
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#!/profile/{{game.GameResults[1].Player.PlayerId}}">{{game.GameResults[1].Player.Name.split('@')[0]}}</a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

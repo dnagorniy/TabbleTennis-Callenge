@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Home Page";
+}
+<script>
+    var playerName = "@User.Identity.Name";
+
+    (function (app) {
+        function mainRoutes($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: '/App/views/Rating.html',
+                    controller: 'indexController'
+                })
+                .when('/profile/:playerId', {
+                    templateUrl: '/App/views/Profile.html',
+                    controller: 'profileController'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+        }
+        mainRoutes.$inject = ["$routeProvider"];
+        app.config(mainRoutes);
+    })(app);
+</script>
+
+<div ng-view>
+</div>
+

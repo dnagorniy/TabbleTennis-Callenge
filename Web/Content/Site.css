@@ -1,0 +1,55 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.my-badge-icon {
+    display: none;
+}
+
+.list-group-t1 :nth-child(1) > .my-badge-icon {
+    display: inline-block;
+    color: gold;
+}
+
+.list-group-t1 :nth-child(2) > .my-badge-icon {
+    display: inline-block;
+    color: silver;
+}
+
+.list-group-t1 :nth-child(3) > .my-badge-icon {
+    display: inline-block;
+    color: #CD7F32;
+}
+
+.glyphicon-circle-arrow-up {
+    color: green;
+}
+
+.my-badge-win {
+    background-color: green;
+}
+
+.my-badge-lose {
+    background-color: darkred;
+}
