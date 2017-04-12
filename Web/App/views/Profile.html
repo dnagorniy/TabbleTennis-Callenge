@@ -1,6 +1,6 @@
 ﻿<div ng-controller="profileController">
     <a href="javascript:history.back()">Go Back</a>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
         <div class="col-md-12">
             <h3>Profile</h3>
             <h3>{{profile.Name}}</h3>
@@ -9,13 +9,41 @@
     <div class="col-sm-4">
         <div class="col-md-12">
             <h3>Stats</h3>
+            <table class="table">
+                <tbody>
+                    <tr class="info">
+                        <td>Games</td>
+                        <td>{{stats.Count}}</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Wins</td>
+                        <td>{{stats.Wins}}</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Loses</td>
+                        <td>{{stats.Loses}}</td>
+                    </tr>
+                    <tr class="info">
+                        <td colspan="2">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width: {{stats.WinsPercent}}%">
+                                    Wins - {{stats.WinsPercent}}%
+                                </div>
+                                <div class="progress-bar progress-bar-danger" style="width: {{stats.LosePercent}}%">
+                                    Loses - {{stats.WinsPercent}}%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
         <h3>Games History</h3>
         <ul class="list-group">
             <div class="list-group-item row" ng-repeat="game in profile.Games">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <a href="#!/profile/{{game.GameResults[0].Player.PlayerId}}">{{game.GameResults[0].Player.Name.split('@')[0]}}</a>
                 </div>
                 <div class="col-sm-2">
@@ -31,8 +59,13 @@
                         {{game.GameResults[1].Score}}
                     </span>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <a href="#!/profile/{{game.GameResults[1].Player.PlayerId}}">{{game.GameResults[1].Player.Name.split('@')[0]}}</a>
+                </div>
+                <div class="col-sm-2">
+                    <span style="background-color: blue" class="badge badge-default badge-pill">
+                        {{game.Date | date:'short'}}
+                    </span>
                 </div>
             </div>
         </ul>
