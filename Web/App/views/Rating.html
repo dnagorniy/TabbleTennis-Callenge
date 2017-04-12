@@ -28,7 +28,7 @@
                     <span class="glyphicon glyphicon-chevron-up my-badge-icon"></span>
                     <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
                     <span class="badge badge-default badge-pill">{{player.Rating}}</span>
-                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!==playerName.split('@')[0] && playerName!==''" ng-click="addGame($event)">Game Result</span>
                 </li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
                 <li class="list-group-item" ng-repeat="player in tier2">
                     <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
                     <span class="badge badge-default badge-pill">{{player.Rating}}</span>
-                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName.split('@')[0] && playerName!==''" ng-click="addGame($event)">Game Result</span>
                 </li>
             </ul>
         </div>
@@ -48,7 +48,7 @@
                 <li class="list-group-item" ng-repeat="player in tier3">
                     <a class="playerNameList" href="#!/profile/{{player.PlayerId}}">{{player.Name}}</a>
                     <span class="badge badge-default badge-pill">{{player.Rating}}</span>
-                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName && playerName!==''" ng-click="addGame($event)">Game Result</span>
+                    <span class="pull-right btn btn-xs btn-success" ng-if="player.Name!=playerName.split('@')[0] && playerName!==''" ng-click="addGame($event)">Game Result</span>
                 </li>
             </ul>
         </div>

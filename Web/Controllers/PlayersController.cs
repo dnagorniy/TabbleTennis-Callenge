@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using TTC_DB.Context;
 using TTC_DB.Entities;
+using Web.Models;
 using WebGrease.Css.Extensions;
 
 namespace Web.Controllers
@@ -26,16 +27,16 @@ namespace Web.Controllers
         }
 
         // GET api/<controller>/5
-        public Profile Get(int id)
+        public ProfileViewModel Get(int id)
         {
             var player = db.Players.FirstOrDefault(x => x.PlayerId == id);
             var gr = db.GameResults.Where(x => x.PlayerId == player.PlayerId);
-            var profile = new Profile()
+            var profile = new ProfileViewModel()
             {
                 Rating = player.Rating,
                 Id = player.PlayerId,
                 Name = player.Name,
-                Games = db.Games.Where(x=>x.GameResults.Any(y=>gr.Contains(y))).ToList()
+                Games = db.Games.Where(x=>x.GameResults.Any(y=>gr.Contains(y))).OrderByDescending(q=>q.Date).ToList()
             };
             return profile;
         }
@@ -54,13 +55,5 @@ namespace Web.Controllers
         public void Delete(int id)
         {
         }
-    }
-
-    public class Profile
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Game> Games { get; set; }
-        public int? Rating { get; set; }
     }
 }
